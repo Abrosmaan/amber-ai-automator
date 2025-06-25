@@ -85,10 +85,10 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
   };
 
   return (
-    <Card className="bg-slate-800/50 border-slate-700 hover:border-amber-400/30 transition-all duration-300 h-full">
+    <Card className="bg-slate-800/50 border-slate-700 hover:border-amber-400/30 transition-all duration-300 h-[600px] flex flex-col">
       <CardContent className="p-6 h-full flex flex-col">
-        {/* Header */}
-        <div className="flex items-start space-x-4 mb-6">
+        {/* Header - Fixed height */}
+        <div className="flex items-start space-x-4 mb-6 flex-shrink-0">
           <div className="w-12 h-12 bg-amber-400/20 rounded-lg flex items-center justify-center flex-shrink-0">
             {mockup.icon}
           </div>
@@ -98,13 +98,13 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           </div>
         </div>
 
-        {/* ROI Highlight */}
-        <div className="bg-amber-400/10 border border-amber-400/20 rounded-lg p-3 mb-6">
+        {/* ROI Highlight - Fixed height */}
+        <div className="bg-amber-400/10 border border-amber-400/20 rounded-lg p-3 mb-6 flex-shrink-0">
           <p className="text-amber-400 font-semibold text-sm">{mockup.roi}</p>
         </div>
 
-        {/* Chat Interface - Fixed height with smooth scrolling */}
-        <div className="flex-1 bg-slate-900 rounded-lg p-4 mb-4 flex flex-col h-[400px]">
+        {/* Chat Interface - Fixed height container */}
+        <div className="bg-slate-900 rounded-lg p-4 mb-4 flex flex-col h-[300px] flex-shrink-0">
           <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-700 flex-shrink-0">
             <div className="text-slate-400 text-sm">AI Agent Demo</div>
             <div className="flex space-x-2">
@@ -129,7 +129,7 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
 
           <div 
             ref={chatContainerRef}
-            className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-600 pr-2"
+            className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-600 pr-2 min-h-0"
           >
             <div className="space-y-3 pb-2">
               {mockup.chatFlow.slice(0, currentMessage).map((msg, msgIndex) => (
