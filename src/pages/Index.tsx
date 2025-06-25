@@ -1,13 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import ScenariosSection from '@/components/ScenariosSection';
+import WhyChooseUsSection from '@/components/WhyChooseUsSection';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
+import AIChat from '@/components/AIChat';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <LanguageProvider>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <HeroSection />
+        <ScenariosSection />
+        <WhyChooseUsSection />
+        <CTASection />
+        <Footer />
+        <AIChat />
       </div>
-    </div>
+    </LanguageProvider>
   );
 };
 
