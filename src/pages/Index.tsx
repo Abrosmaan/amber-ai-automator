@@ -2,9 +2,8 @@
 import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Header from '@/components/Header';
-import HeroSection from '@/components/HeroSection';
-import ScenariosSection from '@/components/ScenariosSection';
-import WhyChooseUsSection from '@/components/WhyChooseUsSection';
+import ShowcaseSection from '@/components/ShowcaseSection';
+import ROISection from '@/components/ROISection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 import AIChat from '@/components/AIChat';
@@ -12,11 +11,10 @@ import AIChat from '@/components/AIChat';
 const Index = () => {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-slate-900">
         <Header />
-        <HeroSection />
-        <ScenariosSection />
-        <WhyChooseUsSection />
+        <ShowcaseSection />
+        <ROISection />
         <CTASection />
         <Footer />
         <AIChat />
