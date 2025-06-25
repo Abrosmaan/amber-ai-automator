@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Play, Pause, RotateCcw } from 'lucide-react';
@@ -29,6 +29,7 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentMessage, setCurrentMessage] = useState(0);
   const [showMetrics, setShowMetrics] = useState(false);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -40,11 +41,21 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           setShowMetrics(true);
           setIsPlaying(false);
         }
-      }, 2500); // Slightly slower for better readability
+      }, 2500);
     }
 
     return () => clearTimeout(interval);
   }, [isPlaying, currentMessage, mockup.chatFlow.length]);
+
+  // Auto-scroll to bottom when new message appears
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [currentMessage]);
 
   const handlePlay = () => {
     if (currentMessage >= mockup.chatFlow.length) {
@@ -92,9 +103,9 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           <p className="text-amber-400 font-semibold text-sm">{mockup.roi}</p>
         </div>
 
-        {/* Chat Interface - Fixed height to prevent jumping */}
-        <div className="flex-1 bg-slate-900 rounded-lg p-4 mb-4 flex flex-col" style={{ minHeight: '400px' }}>
-          <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-700">
+        {/* Chat Interface - Fixed height with smooth scrolling */}
+        <div className="flex-1 bg-slate-900 rounded-lg p-4 mb-4 flex flex-col h-[400px]">
+          <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-700 flex-shrink-0">
             <div className="text-slate-400 text-sm">AI Agent Demo</div>
             <div className="flex space-x-2">
               <Button
@@ -116,27 +127,36 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
             </div>
           </div>
 
-          <div className="flex-1 space-y-3 overflow-y-auto">
-            {mockup.chatFlow.slice(0, currentMessage).map((msg, msgIndex) => (
-              <div
-                key={msgIndex}
-                className={`p-3 rounded-lg text-sm max-w-[90%] animate-in slide-in-from-bottom-2 duration-500 ${
-                  msg.type === 'system' ? 'w-full max-w-full' : ''
-                } ${
-                  ['customer', 'employee', 'lead', 'client'].includes(msg.type) ? 'ml-auto' : ''
-                } ${getMessageStyle(msg.type)}`}
-              >
-                <div className="flex justify-between items-start gap-2">
-                  <div className="flex-1 break-words">{msg.message}</div>
-                  <div className="text-xs opacity-60 flex-shrink-0">{msg.time}</div>
+          <div 
+            ref={chatContainerRef}
+            className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-600 pr-2"
+          >
+            <div className="space-y-3 pb-2">
+              {mockup.chatFlow.slice(0, currentMessage).map((msg, msgIndex) => (
+                <div
+                  key={msgIndex}
+                  className={`p-3 rounded-lg text-sm max-w-[90%] transition-all duration-500 ease-out transform ${
+                    msg.type === 'system' ? 'w-full max-w-full' : ''
+                  } ${
+                    ['customer', 'employee', 'lead', 'client'].includes(msg.type) ? 'ml-auto' : ''
+                  } ${getMessageStyle(msg.type)} animate-in slide-in-from-bottom-2`}
+                  style={{
+                    animationDelay: `${msgIndex * 100}ms`,
+                    animationFillMode: 'both'
+                  }}
+                >
+                  <div className="flex justify-between items-start gap-2">
+                    <div className="flex-1 break-words">{msg.message}</div>
+                    <div className="text-xs opacity-60 flex-shrink-0">{msg.time}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Metrics - Fixed height container */}
-        <div className="h-24 flex items-center">
+        <div className="h-24 flex items-center flex-shrink-0">
           {showMetrics ? (
             <div className="grid grid-cols-2 gap-3 w-full animate-in slide-in-from-bottom-2 duration-500">
               {Object.entries(mockup.metrics).map(([key, value]) => (
