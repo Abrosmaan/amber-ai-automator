@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Play, Pause, RotateCcw, ArrowRight } from 'lucide-react';
+import { Play, Pause, RotateCcw } from 'lucide-react';
 
 interface ChatMessage {
   type: 'customer' | 'ai' | 'human' | 'system' | 'employee' | 'lead' | 'client';
@@ -40,7 +40,7 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           setShowMetrics(true);
           setIsPlaying(false);
         }
-      }, 2000);
+      }, 2500); // Slightly slower for better readability
     }
 
     return () => clearTimeout(interval);
@@ -78,12 +78,12 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
       <CardContent className="p-6 h-full flex flex-col">
         {/* Header */}
         <div className="flex items-start space-x-4 mb-6">
-          <div className="w-12 h-12 bg-amber-400/20 rounded-lg flex items-center justify-center">
+          <div className="w-12 h-12 bg-amber-400/20 rounded-lg flex items-center justify-center flex-shrink-0">
             {mockup.icon}
           </div>
-          <div className="flex-1">
-            <h3 className="text-xl font-semibold text-white mb-2">{mockup.title}</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">{mockup.description}</p>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-xl font-semibold text-white mb-2 line-clamp-2">{mockup.title}</h3>
+            <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">{mockup.description}</p>
           </div>
         </div>
 
@@ -92,8 +92,8 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           <p className="text-amber-400 font-semibold text-sm">{mockup.roi}</p>
         </div>
 
-        {/* Chat Interface */}
-        <div className="flex-1 bg-slate-900 rounded-lg p-4 mb-4 min-h-[300px] flex flex-col">
+        {/* Chat Interface - Fixed height to prevent jumping */}
+        <div className="flex-1 bg-slate-900 rounded-lg p-4 mb-4 flex flex-col" style={{ minHeight: '400px' }}>
           <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-700">
             <div className="text-slate-400 text-sm">AI Agent Demo</div>
             <div className="flex space-x-2">
@@ -120,43 +120,43 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
             {mockup.chatFlow.slice(0, currentMessage).map((msg, msgIndex) => (
               <div
                 key={msgIndex}
-                className={`p-3 rounded-lg text-sm max-w-[85%] animate-in slide-in-from-bottom-2 duration-500 ${
+                className={`p-3 rounded-lg text-sm max-w-[90%] animate-in slide-in-from-bottom-2 duration-500 ${
                   msg.type === 'system' ? 'w-full max-w-full' : ''
                 } ${
                   ['customer', 'employee', 'lead', 'client'].includes(msg.type) ? 'ml-auto' : ''
                 } ${getMessageStyle(msg.type)}`}
               >
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">{msg.message}</div>
-                  <div className="text-xs opacity-60 ml-2 flex-shrink-0">{msg.time}</div>
+                <div className="flex justify-between items-start gap-2">
+                  <div className="flex-1 break-words">{msg.message}</div>
+                  <div className="text-xs opacity-60 flex-shrink-0">{msg.time}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Metrics */}
-        {showMetrics && (
-          <div className="grid grid-cols-2 gap-3 animate-in slide-in-from-bottom-2 duration-500">
-            {Object.entries(mockup.metrics).map(([key, value]) => (
-              <div key={key} className="bg-slate-700/50 rounded-lg p-3 text-center">
-                <div className="text-amber-400 font-semibold text-lg">{value}</div>
-                <div className="text-slate-400 text-xs capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Start button for non-playing state */}
-        {!isPlaying && currentMessage === 0 && (
-          <Button
-            onClick={handlePlay}
-            className="w-full bg-slate-700 hover:bg-slate-600 text-white mt-4"
-          >
-            <Play className="mr-2 h-4 w-4" />
-            See AI Agent in Action
-          </Button>
-        )}
+        {/* Metrics - Fixed height container */}
+        <div className="h-24 flex items-center">
+          {showMetrics ? (
+            <div className="grid grid-cols-2 gap-3 w-full animate-in slide-in-from-bottom-2 duration-500">
+              {Object.entries(mockup.metrics).map(([key, value]) => (
+                <div key={key} className="bg-slate-700/50 rounded-lg p-3 text-center">
+                  <div className="text-amber-400 font-semibold text-lg">{value}</div>
+                  <div className="text-slate-400 text-xs capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Button
+              onClick={handlePlay}
+              className="w-full bg-slate-700 hover:bg-slate-600 text-white"
+              disabled={isPlaying}
+            >
+              <Play className="mr-2 h-4 w-4" />
+              {isPlaying ? 'Playing Demo...' : 'See AI Agent in Action'}
+            </Button>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
