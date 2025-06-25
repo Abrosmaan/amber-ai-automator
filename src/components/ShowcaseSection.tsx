@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AIAgentMockup from './AIAgentMockup';
@@ -248,7 +247,7 @@ const ShowcaseSection: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Real Business Success Stories
+            AI Agent Demo
           </h1>
           <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
             See how AI Agents transform business operations across industries with measurable ROI
