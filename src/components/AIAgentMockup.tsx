@@ -85,27 +85,27 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
   };
 
   return (
-    <Card className="bg-slate-800/50 border-slate-700 hover:border-amber-400/30 transition-all duration-300 h-[600px] flex flex-col">
+    <Card className="bg-slate-800/50 border-slate-700 hover:border-amber-400/30 transition-all duration-300 h-[800px] flex flex-col">
       <CardContent className="p-6 h-full flex flex-col">
         {/* Header - Fixed height */}
-        <div className="flex items-start space-x-4 mb-6 flex-shrink-0">
+        <div className="flex items-start space-x-4 mb-4 flex-shrink-0 h-[120px]">
           <div className="w-12 h-12 bg-amber-400/20 rounded-lg flex items-center justify-center flex-shrink-0">
             {mockup.icon}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-xl font-semibold text-white mb-2 line-clamp-2">{mockup.title}</h3>
-            <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">{mockup.description}</p>
+            <h3 className="text-xl font-semibold text-white mb-2 line-clamp-2 leading-tight">{mockup.title}</h3>
+            <p className="text-slate-400 text-sm leading-relaxed line-clamp-4">{mockup.description}</p>
           </div>
         </div>
 
         {/* ROI Highlight - Fixed height */}
-        <div className="bg-amber-400/10 border border-amber-400/20 rounded-lg p-3 mb-6 flex-shrink-0">
+        <div className="bg-amber-400/10 border border-amber-400/20 rounded-lg p-3 mb-4 flex-shrink-0 h-[60px] flex items-center">
           <p className="text-amber-400 font-semibold text-sm">{mockup.roi}</p>
         </div>
 
         {/* Chat Interface - Fixed height container */}
-        <div className="bg-slate-900 rounded-lg p-4 mb-4 flex flex-col h-[300px] flex-shrink-0">
-          <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-700 flex-shrink-0">
+        <div className="bg-slate-900 rounded-lg p-4 mb-4 flex flex-col h-[420px] flex-shrink-0">
+          <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-700 flex-shrink-0 h-[40px]">
             <div className="text-slate-400 text-sm">AI Agent Demo</div>
             <div className="flex space-x-2">
               <Button
@@ -155,8 +155,8 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           </div>
         </div>
 
-        {/* Metrics - Fixed height container */}
-        <div className="h-24 flex items-center flex-shrink-0">
+        {/* Metrics/Button - Fixed height container */}
+        <div className="h-[120px] flex items-center flex-shrink-0">
           {showMetrics ? (
             <div className="grid grid-cols-2 gap-3 w-full animate-in slide-in-from-bottom-2 duration-500">
               {Object.entries(mockup.metrics).map(([key, value]) => (
@@ -169,7 +169,7 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           ) : (
             <Button
               onClick={handlePlay}
-              className="w-full bg-slate-700 hover:bg-slate-600 text-white"
+              className="w-full bg-slate-700 hover:bg-slate-600 text-white h-12"
               disabled={isPlaying}
             >
               <Play className="mr-2 h-4 w-4" />
