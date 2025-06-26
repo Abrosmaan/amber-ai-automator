@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AIAgentMockup from './AIAgentMockup';
@@ -243,7 +244,7 @@ const ShowcaseSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 bg-slate-900">
+    <section className="pt-24 pb-12 bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
