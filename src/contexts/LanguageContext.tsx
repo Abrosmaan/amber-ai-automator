@@ -18,8 +18,28 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.consultation': 'Get Consultation',
     
+    // Hero Section
+    'hero.title': 'AI Agents That Work While You Focus on Growth',
+    'hero.subtitle': 'Custom AI solutions that automate routine tasks while keeping critical decisions in human hands. See measurable ROI in 2-4 months.',
+    'hero.cta.primary': 'See AI Agents in Action',
+    'hero.cta.secondary': 'Talk to AI Specialist',
+    'stats.savings': 'Monthly Savings',
+    'stats.roi': 'ROI in',
+    'stats.months': 'months',
+    'stats.automation': 'Task Automation',
+    
+    // Why Choose Us Section
+    'why.title': 'Why Choose Our AI Agents',
+    'why.subtitle': 'Built for businesses that need real results, not just impressive demos.',
+    'why.custom.title': 'Custom Built Solutions',
+    'why.custom.description': 'Every AI agent is tailored to your specific business processes and requirements.',
+    'why.roi.title': 'Guaranteed ROI',
+    'why.roi.description': 'Measurable returns within 2-4 months or we refine the solution at no extra cost.',
+    'why.human.title': 'Human-AI Partnership',
+    'why.human.description': 'AI handles routine work, humans make critical decisions. Perfect balance for business growth.',
+    
     // Showcase Section
-    'showcase.title': 'AI Agents in Action',
+    'showcase.title': 'AI Agent Demo',
     'showcase.subtitle': 'Watch real business scenarios where our AI Agents handle routine tasks while keeping critical decisions in human hands. Each demonstration shows measurable ROI and practical implementation.',
     
     'showcase.support.title': 'Customer Support Automation',
@@ -47,7 +67,7 @@ const translations = {
     'showcase.scheduling.roi': '$2,800 monthly savings on administrative costs',
     
     // ROI Section
-    'roi.title': 'Measurable Business Impact',
+    'roi.title': 'Real Business Success Stories',
     'roi.subtitle': 'Our AI Agents deliver concrete, trackable results that directly impact your bottom line.',
     
     'roi.savings.title': 'Monthly Cost Savings',
@@ -109,8 +129,28 @@ const translations = {
     'nav.contact': 'Контакты',
     'nav.consultation': 'Получить консультацию',
     
+    // Hero Section
+    'hero.title': 'ИИ-агенты работают, пока вы фокусируетесь на росте',
+    'hero.subtitle': 'Индивидуальные ИИ-решения, которые автоматизируют рутинные задачи, оставляя критические решения за людьми. Измеримая окупаемость через 2-4 месяца.',
+    'hero.cta.primary': 'Посмотреть ИИ-агентов в действии',
+    'hero.cta.secondary': 'Поговорить со специалистом по ИИ',
+    'stats.savings': 'Месячная экономия',
+    'stats.roi': 'Окупаемость за',
+    'stats.months': 'месяцев',
+    'stats.automation': 'Автоматизация задач',
+    
+    // Why Choose Us Section
+    'why.title': 'Почему выбирают наших ИИ-агентов',
+    'why.subtitle': 'Созданы для бизнеса, которому нужны реальные результаты, а не просто впечатляющие демо.',
+    'why.custom.title': 'Индивидуальные решения',
+    'why.custom.description': 'Каждый ИИ-агент настроен под ваши конкретные бизнес-процессы и требования.',
+    'why.roi.title': 'Гарантированная окупаемость',
+    'why.roi.description': 'Измеримая отдача в течение 2-4 месяцев или мы улучшим решение без доплат.',
+    'why.human.title': 'Партнерство человека и ИИ',
+    'why.human.description': 'ИИ выполняет рутинную работу, люди принимают критические решения. Идеальный баланс для роста бизнеса.',
+    
     // Showcase Section
-    'showcase.title': 'ИИ-агенты в действии',
+    'showcase.title': 'Демо ИИ-агентов',
     'showcase.subtitle': 'Смотрите реальные бизнес-сценарии, где наши ИИ-агенты выполняют рутинные задачи, оставляя критические решения за людьми. Каждая демонстрация показывает измеримую окупаемость и практическую реализацию.',
     
     'showcase.support.title': 'Автоматизация поддержки клиентов',
@@ -138,7 +178,7 @@ const translations = {
     'showcase.scheduling.roi': '₽195,000 месячной экономии на административных расходах',
     
     // ROI Section
-    'roi.title': 'Измеримое влияние на бизнес',
+    'roi.title': 'Реальные истории успеха бизнеса',
     'roi.subtitle': 'Наши ИИ-агенты обеспечивают конкретные, отслеживаемые результаты, которые напрямую влияют на вашу прибыль.',
     
     'roi.savings.title': 'Месячная экономия затрат',
