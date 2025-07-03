@@ -155,13 +155,13 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           </div>
         </div>
 
-        {/* Metrics/Button - Fixed height container */}
-        <div className="h-[120px] flex items-center flex-shrink-0">
+        {/* Metrics/Button - Fixed height container with proper spacing */}
+        <div className="h-[120px] flex items-center flex-shrink-0 px-2">
           {showMetrics ? (
-            <div className="grid grid-cols-2 gap-3 w-full animate-in slide-in-from-bottom-2 duration-500">
+            <div className="grid grid-cols-2 gap-2 w-full animate-in slide-in-from-bottom-2 duration-500">
               {Object.entries(mockup.metrics).map(([key, value]) => (
-                <div key={key} className="bg-slate-700/50 rounded-lg p-3 text-center">
-                  <div className="text-amber-400 font-semibold text-lg">{value}</div>
+                <div key={key} className="bg-slate-700/50 rounded-lg p-2 text-center">
+                  <div className="text-amber-400 font-semibold text-sm">{value}</div>
                   <div className="text-slate-400 text-xs capitalize">{key.replace(/([A-Z])/g, ' $1')}</div>
                 </div>
               ))}
@@ -169,7 +169,7 @@ const AIAgentMockup: React.FC<AIAgentMockupProps> = ({ mockup, index }) => {
           ) : (
             <Button
               onClick={handlePlay}
-              className="w-full bg-slate-700 hover:bg-slate-600 text-white h-12"
+              className="w-full bg-slate-700 hover:bg-slate-600 text-white h-12 mx-2"
               disabled={isPlaying}
             >
               <Play className="mr-2 h-4 w-4" />
